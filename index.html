@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ramitha Ramdas - Resume</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; scroll-behavior: smooth; }
+    header { position: sticky; top: 0; z-index: 1000; background: #fff; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+    nav a { margin-left: 20px; text-decoration: none; color: #333; font-weight: 500; cursor: pointer; }
+    nav a:hover, nav a.active { color: #1d4ed8; border-bottom: 2px solid #1d4ed8; padding-bottom: 2px; }
+
+    .hero, .about, .skills, .experience, .portfolio, #contact { scroll-margin-top: 100px; }
+    .hero, .about { display: flex; justify-content: space-between; align-items: center; padding: 60px 40px; flex-wrap: wrap; }
+    .hero-text, .about-text { max-width: 600px; }
+    .hero h1 { font-size: 2.5em; margin-bottom: 20px; }
+    .hero h1 span { color: #1d4ed8; }
+    .hero p, .about p { font-size: 1.1em; line-height: 1.6; color: #555; }
+    .buttons { margin-top: 30px; }
+    .btn { padding: 10px 20px; margin-right: 15px; border: none; font-size: 1em; border-radius: 6px; cursor: pointer; }
+    .btn-primary { background-color: #2563eb; color: white; }
+    .btn-outline { border: 2px solid #2563eb; color: #2563eb; background: transparent; }
+    
+
+    .hero-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+     .about-image img {
+  width: 50%;
+  max-width: 400px;
+  height: 500px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+.about-image {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+
+    .section-title { text-align: center; font-size: 1.75em; font-weight: bold; margin-top: 60px; margin-bottom: 20px; color: #111; }
+    .section-subtitle { text-align: center; font-size: 1em; color: #777; margin-bottom: 40px; }
+
+    .tag-container { margin-top: 20px; }
+    .tag { display: inline-block; padding: 8px 12px; margin: 5px; background: #e0edff; color: #1d4ed8; font-size: 0.9em; border-radius: 20px; }
+
+    .skills, .experience { padding: 60px 40px; background-color: #f9fafb; text-align: center; }
+    .skills-grid, .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 30px; max-width: 1000px; margin: 40px auto 0; }
+
+    .skill-card, .project-card, .experience-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s ease; }
+    .skill-card:hover, .project-card:hover { transform: translateY(-5px); }
+    .skill-card span, .project-card span { font-size: 32px; display: block; margin-bottom: 10px; }
+
+    .skill-card h4, .project-card h3, .experience-header h3 { margin: 0; font-size: 1.2em; font-weight: bold; color: #111; }
+    .skill-card p, .project-card p, .experience-card p, .experience-card ul li { font-size: 0.95em; color: #555; }
+    .tools-used span { display: inline-block; background-color: #e5edff; color: #2c4ecf; font-size: 0.85em; padding: 6px 12px; border-radius: 20px; margin: 5px 5px 0 0; font-weight: 500; }
+
+    .experience-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; }
+    .experience-meta { text-align: right; font-size: 0.9em; color: #666; }
+    .experience-meta span { display: block; margin-top: 4px; }
+    .experience-card ul { padding-left: 20px; margin-top: 15px; text-align: left; }
+    .experience-card ul li { list-style-type: disc; margin-bottom: 8px; }
+
+    @keyframes floatUpDown {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+            .hero, .about, .experience, .skills { padding: 40px 20px; }
+
+  .hero-text, .about-text, .hero-image, .about-image {
+    flex: 1 1 100%;
+    max-width: 100%;
+    text-align: center;
+    .hero h1 { font-size: 2em; }
+      .section-title { font-size: 1.5em; }
+  }
+}
+  
+  
+    
+  </style>
+</head>
+<body>
+ 
+<section class="hero">
+  <div class="hero-text">
+    <h1>Hi, I'm <span>Ramitha Ramdas</span></h1>
+    <p>Senior Business Analyst with expertise in data modeling and business process improvements. Passionate about developing self-serve data models and actionable insights to enhance decision-making.</p>
+    <div class="buttons">
+      <button class="btn btn-primary">View My Work</button>
+      <button class="btn btn-outline">Get In Touch</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Dashboard on laptop">
+  </div>
+</section>
+
+  <section class="about" id="about">
+  <div class="about-image">
+    <img src="https://banner2.cleanpng.com/20240301/vvh/transparent-business-woman-cartoon-cartoon-character-woman-wit-cartoon-woman-in-black-business-suit-1710856357147.webp"
+         alt="Analytics dashboard">
+  </div>
+  <div class="about-text">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">Passionate about building digital solutions that make a difference</p>
+    <p>
+      Results-driven Senior Business Analyst with expertise in data modeling and business process improvements. Currently leading the Central Analytics team at Leap Scholar with proven track record in developing self-serve data models and actionable insights.
+    </p>
+    <p>
+      Skilled in SQL, BigQuery, and BI tools, I have successfully led projects that elevated operational efficiency by 30%+ and supported executive leadership with data-driven reports. I hold an MBA in Business Analytics from NIT Calicut and BTech in Information Technology.
+    </p>
+    <div class="tag-container">
+      <span class="tag">Data Modeling Expert</span>
+      <span class="tag">Business Process Improvement</span>
+      <span class="tag">Critical Thinker</span>
+      <span class="tag">Team Leader</span>
+    </div>
+  </div>
+  </section>
+  <section class="skills" id="skills">
+  <h2 class="section-title">Skills & Expertise</h2>
+  <p class="section-subtitle">Technologies and tools I work with to bring ideas to life</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span>🗄️</span>
+      <h4>SQL</h4>
+      <p>Expert</p>
+    </div>
+    <div class="skill-card">
+      <span>📊</span>
+      <h4>BigQuery</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span>📈</span>
+      <h4>Data Modeling</h4>
+      <p>Expert</p>
+    </div>
+    <div class="skill-card">
+      <span>📊</span>
+      <h4>Tableau</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span>📋</span>
+      <h4>Excel</h4>
+      <p>Expert</p>
+    </div>
+    <div class="skill-card">
+      <span>🔁</span>
+      <h4>Hevo</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span>📈</span>
+      <h4>Metabase</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span>📊</span>
+      <h4>Zoho Analytics</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span>📝</span>
+      <h4>Google Sheets</h4>
+      <p>Expert</p>
+    </div>
+    <div class="skill-card">
+      <span>📋</span>
+      <h4>JIRA</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span>📊</span>
+      <h4>Mixpanel</h4>
+      <p>Intermediate</p>
+    </div>
+    <div class="skill-card">
+      <span>🧠</span>
+      <h4>Business Intelligence</h4>
+      <p>Expert</p>
+    </div>
+  </div>
+</section>
+  <section class="experience" id="experience">
+  <h2 class="section-title">Work Experience</h2>
+
+  <div class="experience-card">
+    <div class="experience-header">
+      <div>
+        <h3>Senior Business Analyst</h3>
+        <a href="https://www.leapscholar.com" target="_blank">Leap Scholar</a>
+      </div>
+      <div class="experience-meta">
+        <span>📅 May 2022 – Present</span>
+        <span>📍 Bangalore</span>
+      </div>
+    </div>
+    <ul>
+      <li>Lead Central Analytics team with two junior analysts managing entire LS funnel</li>
+      <li>Identify, analyze and interpret trends in complex datasets using BI tools</li>
+      <li>Developed automated ETL pipelines using Hevo for BigQuery integration</li>
+      <li>Created self-serve data models enabling business owners to track metrics independently</li>
+      <li>Built dashboards for performance tracking and decision-making recommendations</li>
+    </ul>
+    <div class="tools-used">
+      <span>BigQuery</span>
+      <span>Hevo</span>
+      <span>Zoho CRM</span>
+      <span>Zoho Analytics</span>
+      <span>Metabase</span>
+      <span>Data Studio</span>
+      <span>Mixpanel</span>
+    </div>
+  </div>
+
+  <div class="experience-card">
+    <div class="experience-header">
+      <div>
+        <h3>Quality Business Analyst</h3>
+        <a href="https://www.whitehatjr.com" target="_blank">WhiteHat Education Technology Pvt Ltd</a>
+      </div>
+      <div class="experience-meta">
+        <span>📅 Sep 2020 – May 2022</span>
+        <span>📍 Mumbai</span>
+      </div>
+    </div>
+    <ul>
+      <li>Conducted technical audits identifying quality issues impacting platform performance</li>
+      <li>Developed customer segmentation models improving marketing campaign efficiency</li>
+      <li>Prepared internal reports for executive leadership supporting decision making</li>
+      <li>Analyzed data to derive insights and embed them into business actions</li>
+      <li>Tracked and resolved issues via JIRA ensuring timely resolution</li>
+    </ul>
+    <div class="tools-used">
+      <span>MS Excel</span>
+      <span>Google Sheets</span>
+      <span>Tableau</span>
+      <span>JIRA</span>
+      <span>Twilio</span>
+    </div>
+  </div>
+
+<h2 class="section-title">Awards & Recognition</h2>
+
+<div class="experience-card">
+  <h3>🏅 Phenomenal Player Award</h3>
+  <p><strong>Feb 2024</strong></p>
+  <p>
+    Owned reporting process optimization initiative for counselling team with high accuracy and timely execution. Led CRM transition project ensuring release accuracy within tight timelines.
+  </p>
+</div>
+
+<div class="experience-card">
+  <h3>🏅 Phenomenal Player Award</h3>
+  <p><strong>Nov 2022</strong></p>
+  <p>
+    Owned product solutioning and development of business critical projects, minimizing applications on hold and rejections by 30%+.
+  </p>
+</div>
+
+<h2 class="section-title">Education</h2>
+
+<div class="experience-card">
+  <h3>MBA in Business Analytics and Marketing</h3>
+  <p><a>Minor in Operations</a></p>
+  <p>National Institute of Technology, Calicut</p>
+  <p>📍 Kerala &nbsp;&nbsp;&nbsp; 📅 2018–2020</p>
+</div>
+
+<div class="experience-card">
+  <h3>BTech in Information Technology</h3>
+  <p>Government Engineering College, Palakkad</p>
+  <p>📍 Kerala &nbsp;&nbsp;&nbsp; 📅 2014–2018</p>
+</div>
+
+</section>
+<section class="portfolio" id="portfolio">
+  <h2 class="section-title">My Work</h2>
+  <p class="section-subtitle">A collection of projects that showcase my skills and experience</p>
+  
+  <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: auto;">
+    
+    <div class="project-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL9t_yGuLvN-FBrY4g9VXzxaITXQFDaiKkxQ&s" alt="ETL Dashboard" style="width: 100%; border-radius: 12px;">
+      <h3>ETL Pipeline Automation</h3>
+      <p>Developed and maintained automated data pipelines using Hevo for seamless ETL processes, ensuring data integration from multiple sources into Google BigQuery with high reliability.</p>
+      <div class="tools-used"><span>Hevo</span><span>BigQuery</span><span>SQL</span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://www.ncypgarden.com/cdn/shop/files/IMG_8732.jpg?v=1709602366&width=100%20100w,%20//www.ncypgarden.com/cdn/shop/files/IMG_8732.jpg?v=1709602366&width=160%20160w" alt="Analytics Platform" style="width: 100%; border-radius: 12px;">
+      <h3>Self-Serve Analytics Platform</h3>
+      <p>Created no-code data models enabling business owners to independently track key metrics, reducing dependency on analytics teams by 50% and improving decision-making speed.</p>
+      <div class="tools-used"><span>Metabase</span><span>BigQuery</span><span>Data Studio</span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://digitalanalystteam.com/wp-content/uploads/2023/06/Looker-studio-data-visualization-1170x500.jpg" alt="Business Optimization" style="width: 100%; border-radius: 12px;">
+      <h3>Business Process Optimization</h3>
+      <p>Led reporting process optimization initiative for counselling team, reducing manual work and ensuring 95% accuracy in application processing while minimizing rejections by 30%.</p>
+      <div class="tools-used"><span>Zoho CRM</span><span>Zoho Analytics</span><span>Excel</span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2" alt="Segmentation Model" style="width: 100%; border-radius: 12px;">
+      <h3>Customer Segmentation Model</h3>
+      <p>Developed advanced customer segmentation models to improve marketing campaign efficiency by 40%, using data analysis to identify high-value customer segments and behavior patterns.</p>
+      <div class="tools-used"><span>SQL</span><span>Tableau</span><span>Google Sheets</span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Executive Dashboards" style="width: 100%; border-radius: 12px;">
+      <h3>Executive Dashboard Suite</h3>
+      <p>Built comprehensive dashboards and reports for executive leadership, providing real-time insights into business performance and supporting data-driven strategic decisions.</p>
+      <div class="tools-used"><span>Data Studio</span><span>BigQuery</span><span>Mixpanel</span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1590080876839-0d50c3d3af34" alt="QA Analytics" style="width: 100%; border-radius: 12px;">
+      <h3>Quality Assurance Analytics</h3>
+      <p>Conducted technical audits and quality analysis using JIRA tracking, identifying critical issues that could impact platform performance and implementing resolution protocols.</p>
+      <div class="tools-used"><span>JIRA</span><span>SQL</span><span>Tableau</span></div>
+    </div>
+
+  </div>
+</section>
+  <section id="contact" style="background-color: #0f172a; color: #fff; padding: 150px 40px;">
+  <h2 style="text-align: center; font-size: 2em;margin-top:5px; margin-bottom: 10px;">Let's Work Together</h2>
+  <p style="text-align: center; font-size: 1em; color: #cbd5e1; margin-bottom: 50px;">
+    Have a project in mind? Let's discuss how we can bring your ideas to life.
+  </p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1200px; margin: auto;">
+    <!-- Contact Info -->
+    <div style="flex: 1 1 300px; max-width: 400px;">
+      <h3>Get In Touch</h3>
+      <p>📧 <strong>Email:</strong> ramitharamdas95@gmail.com</p>
+      <p>📍 <strong>Location:</strong> Bangalore, India</p>
+
+      <div style="margin-top: 10px;">
+        <a href="https://www.linkedin.com/in/ramitharamdas" target="_blank" style="margin-right: 15px;"><img src="https://img.icons8.com/ios-filled/28/ffffff/linkedin.png"/></a>
+        <a href="mailto:ramitharamdas95@gmail.com" style="margin-right: 15px;"><img src="https://img.icons8.com/ios-filled/28/ffffff/email.png"/></a>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div style="flex: 1 1 400px; max-width: 600px;">
+    </div>
+  </div>
+</section>
+  
+</body>
+</html>
