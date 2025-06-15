@@ -39,7 +39,7 @@
     .skills, .experience { padding: 60px 40px; background-color: #f9fafb; text-align: center; }
     .skills-grid, .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 30px; max-width: 1000px; margin: 40px auto 0; }
 
-    .skill-card, .project-card, .experience-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s ease; }
+    .skill-card, .project-card, .experience-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s ease; box-sizing: border-box; }
     .skill-card:hover, .project-card:hover { transform: translateY(-5px); }
     .skill-card span, .project-card span { font-size: 32px; display: block; margin-bottom: 10px; }
 
@@ -65,12 +65,16 @@
       max-width: 500px;
       flex: 1 1 350px;
       text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .hero-image {
       flex: 1 1 300px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      margin-top: 24px;
     }
     .animated-hero-img {
       width: 100%;
@@ -79,7 +83,11 @@
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       animation: floatUpDown 4s ease-in-out infinite, pulse 6s ease-in-out infinite;
-      transition: all 0.4s ease;
+      transition: all 0.4s ease, opacity 0.7s ease;
+      opacity: 1;
+    }
+    .animated-hero-img.fade {
+      opacity: 0;
     }
     .animated-hero-img:hover {
       transform: scale(1.03);
@@ -100,18 +108,30 @@
         padding: 40px 20px;
       }
     }
+    @media (max-width: 900px) {
+      .hero-image {
+        margin-top: 0;
+      }
+    }
     .hero-card {
       background: #fff;
       border-radius: 20px;
       padding: 60px 40px;
       max-width: 1200px;
-      margin: 40px auto;
+      margin: 40px auto 10px auto;
     }
     @media (max-width: 768px) {
       .hero-card {
         padding: 30px 10px;
-        margin: 20px 8px;
+        margin: 20px 8px 5px 8px;
       }
+    }
+    .about-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 10px auto 40px auto;
     }
   </style>
 </head>
@@ -129,27 +149,52 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="hero.jpg" alt="Dashboard on laptop" class="animated-hero-img">
+        <img id="hero-img" src="hero.jpg" alt="Dashboard on laptop" class="animated-hero-img">
       </div>
     </div>
   </div>
 </section>
 
+<script>
+const heroImages = ["hero.jpg", "hero-2.jpg", "hero-3.jpg"];
+let heroIndex = 0;
+const heroImg = document.getElementById("hero-img");
+setInterval(() => {
+  heroImg.classList.add("fade");
+  setTimeout(() => {
+    heroIndex = (heroIndex + 1) % heroImages.length;
+    heroImg.src = heroImages[heroIndex];
+    heroImg.classList.remove("fade");
+  }, 700);
+}, 3000);
+</script>
+
   <section class="about" id="about">
-  <div class="about-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
-    <h2 class="section-title">About Me</h2>
-    <p class="section-subtitle">Passionate about building digital solutions that make a difference</p>
-    <p>
-      Results-driven Senior Business Analyst with expertise in data modeling and business process improvements. Currently leading the Central Analytics team at Leap Scholar with proven track record in developing self-serve data models and actionable insights.
-    </p>
-    <p>
-      Skilled in SQL, BigQuery, and BI tools, I have successfully led projects that elevated operational efficiency by 30%+ and supported executive leadership with data-driven reports. I hold an MBA in Business Analytics from NIT Calicut and BTech in Information Technology.
-    </p>
-    <div class="tag-container">
-      <span class="tag">Data Modeling Expert</span>
-      <span class="tag">Business Process Improvement</span>
-      <span class="tag">Critical Thinker</span>
-      <span class="tag">Team Leader</span>
+  <div class="about-card" style="background: #fff; border-radius: 20px; padding: 60px 40px; max-width: 1200px; margin: 40px auto;">
+    <div class="about-content" style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+      <div class="about-image" style="flex: 1 1 300px; display: flex; justify-content: flex-start; align-items: center;">
+        <img src="about.jpg" alt="About me" class="animated-about-img" style="width: 100%; max-width: 420px; height: 500px; object-fit: cover; object-position: top; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); animation: floatUpDown 4s ease-in-out infinite, pulse 6s ease-in-out infinite; transition: all 0.4s ease, opacity 0.7s ease; opacity: 1;">
+      </div>
+      <div class="about-text" style="flex: 1 1 350px; text-align: left;">
+        <h2 class="section-title" style="text-align: left;">About Me</h2>
+        <p>
+          Results-driven Senior Business Analyst with expertise in data modeling and business process improvements. Currently leading the Central Analytics team at Leap Scholar with proven track record in developing self-serve data models and actionable insights.
+        </p>
+        <p>
+          Skilled in SQL, BigQuery, and BI tools, I have successfully led projects that elevated operational efficiency by 30%+ and supported executive leadership with data-driven reports. I hold an MBA in Business Analytics from NIT Calicut and BTech in Information Technology.
+        </p>
+        <div class="tag-container">
+          <span class="tag">Data Modeling Expert</span>
+          <span class="tag">Business Process Improvement</span>
+          <span class="tag">Critical and Analytical Thinker</span>
+          <span class="tag">Team Leader</span>
+          <span class="tag">Data Visualization</span>
+          <span class="tag">Project Management</span>
+          <span class="tag">Mentorship</span>
+          <span class="tag">Reporting and Documentation</span>
+          <span class="tag">Business Intelligence</span>
+        </div>
+      </div>
     </div>
   </div>
   </section>
@@ -158,129 +203,94 @@
   <p class="section-subtitle">Technologies and tools I work with to bring ideas to life</p>
   <div class="skills-grid">
     <div class="skill-card">
-      <span>🗄️</span>
-      <h4>SQL</h4>
-      <p>Expert</p>
-    </div>
-    <div class="skill-card">
-      <span>📊</span>
-      <h4>BigQuery</h4>
-      <p>Advanced</p>
-    </div>
-    <div class="skill-card">
-      <span>📈</span>
-      <h4>Data Modeling</h4>
-      <p>Expert</p>
-    </div>
-    <div class="skill-card">
-      <span>📊</span>
-      <h4>Tableau</h4>
-      <p>Advanced</p>
-    </div>
-    <div class="skill-card">
-      <span>📋</span>
-      <h4>Excel</h4>
-      <p>Expert</p>
-    </div>
-    <div class="skill-card">
-      <span>🔁</span>
-      <h4>Hevo</h4>
-      <p>Advanced</p>
-    </div>
-    <div class="skill-card">
-      <span>📈</span>
-      <h4>Metabase</h4>
-      <p>Advanced</p>
-    </div>
-    <div class="skill-card">
-      <span>📊</span>
-      <h4>Zoho Analytics</h4>
-      <p>Advanced</p>
-    </div>
-    <div class="skill-card">
-      <span>📝</span>
+      <span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Google_Sheets_logo_%282014-2020%29.svg/1498px-Google_Sheets_logo_%282014-2020%29.svg.png" alt="Google Sheets Logo" style="width: 40px; height: 40px;"></span>
       <h4>Google Sheets</h4>
       <p>Expert</p>
     </div>
     <div class="skill-card">
-      <span>📋</span>
+      <span><img src="https://static-00.iconduck.com/assets.00/postgresql-icon-1987x2048-v2fkmdaw.png" alt="PostgreSQL Logo" style="width: 40px; height: 40px;"></span>
+      <h4>PostgreSQL</h4>
+      <p>Expert</p>
+    </div>
+    <div class="skill-card">
+      <span><img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="SQL Server Logo" style="width: 40px; height: 40px;"></span>
+      <h4>SQL</h4>
+      <p>Expert</p>
+    </div>
+    <div class="skill-card">
+      <span><img src="https://images.icon-icons.com/2699/PNG/512/google_bigquery_logo_icon_168150.png" alt="BigQuery Logo" style="width: 40px; height: 40px;"></span>
+      <h4>BigQuery</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span><img src="https://images.seeklogo.com/logo-png/61/1/looker-studio-logo-png_seeklogo-617989.png" alt="Google Looker Studio Logo" style="width: 40px; height: 40px;"></span>
+      <h4>Google Looker Studio</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span><img src="https://hubspot-integrators-prod.s3.amazonaws.com/listing/181205.png" alt="Hevo Logo" style="width: 40px; height: 40px;"></span>
+      <h4>Hevo</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span><img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="JIRA Logo" style="width: 40px; height: 40px;"></span>
       <h4>JIRA</h4>
       <p>Advanced</p>
     </div>
     <div class="skill-card">
-      <span>📊</span>
+      <span><img src="https://theworkflowacademy.com/wp-content/uploads/2024/03/zoho-CRM.png" alt="Zoho CRM Logo" style="width: 40px; height: 40px;"></span>
+      <h4>Zoho CRM</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span><img src="https://img.icons8.com/?size=512&id=KJ0KehaD9qPs&format=png" alt="Zoho Analytics Logo" style="width: 40px; height: 40px;"></span>
+      <h4>Zoho Analytics</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span><img src="https://static-00.iconduck.com/assets.00/metabase-icon-1619x2048-qd3c9qpo.png" alt="Metabase Logo" style="width: 40px; height: 40px;"></span>
+      <h4>Metabase</h4>
+      <p>Advanced</p>
+    </div>
+    <div class="skill-card">
+      <span><img src="https://cdn.brandfetch.io/idr_rhI2FS/theme/dark/idMJ8uODLv.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Mixpanel Logo" style="width: 40px; height: 40px;"></span>
       <h4>Mixpanel</h4>
       <p>Intermediate</p>
     </div>
     <div class="skill-card">
-      <span>🧠</span>
-      <h4>Business Intelligence</h4>
-      <p>Expert</p>
+      <span><img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau Logo" style="width: 40px; height: 40px;"></span>
+      <h4>Tableau</h4>
+      <p>Intermediate</p>
     </div>
   </div>
 </section>
   <section class="experience" id="experience">
   <h2 class="section-title">Work Experience</h2>
 
-  <div class="experience-card">
-    <div class="experience-header">
-      <div>
-        <h3>Senior Business Analyst</h3>
-        <a href="https://www.leapscholar.com" target="_blank">Leap Scholar</a>
-      </div>
-      <div class="experience-meta">
-        <span>📅 May 2022 – Present</span>
-        <span>📍 Bangalore</span>
-      </div>
-    </div>
-    <ul>
-      <li>Lead Central Analytics team with two junior analysts managing entire LS funnel</li>
-      <li>Identify, analyze and interpret trends in complex datasets using BI tools</li>
-      <li>Developed automated ETL pipelines using Hevo for BigQuery integration</li>
-      <li>Created self-serve data models enabling business owners to track metrics independently</li>
-      <li>Built dashboards for performance tracking and decision-making recommendations</li>
-    </ul>
-    <div class="tools-used">
-      <span>BigQuery</span>
-      <span>Hevo</span>
-      <span>Zoho CRM</span>
-      <span>Zoho Analytics</span>
-      <span>Metabase</span>
-      <span>Data Studio</span>
-      <span>Mixpanel</span>
+  <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
+  <div class="experience-card" style="text-align: left; flex: 1 1 calc(50% - 15px);">
+    <div class="experience-header" style="display: block;">
+      <h3 style="margin-bottom: 4px; text-align: left;">Senior Business Analyst</h3>
+      <p style="margin-bottom: 4px; color: #555; text-align: left;">📅 May 2022 – May 2025</p>
+      <a href="https://www.leapscholar.com" target="_blank" style="display:block; font-weight: 500; text-align: left; margin-bottom: 4px;">Leap Scholar</a>
+      <p style="color: #555; text-align: left;">📍 Bangalore</p>
     </div>
   </div>
 
-  <div class="experience-card">
-    <div class="experience-header">
-      <div>
-        <h3>Quality Business Analyst</h3>
-        <a href="https://www.whitehatjr.com" target="_blank">WhiteHat Education Technology Pvt Ltd</a>
-      </div>
-      <div class="experience-meta">
-        <span>📅 Sep 2020 – May 2022</span>
-        <span>📍 Mumbai</span>
-      </div>
+  <div class="experience-card" style="text-align: left; flex: 1 1 calc(50% - 15px);">
+    <div class="experience-header" style="display: block;">
+      <h3 style="margin-bottom: 4px; text-align: left;">Quality Business Analyst</h3>
+      <p style="margin-bottom: 4px; color: #555; text-align: left;">📅 Sep 2020 – May 2022</p>
+      <a href="https://learn.whitehatjr.com/" target="_blank" style="display:block; font-weight: 500; text-align: left; margin-bottom: 4px;">WhiteHat Education Technology Pvt Ltd</a>
+      <p style="color: #555; text-align: left;">📍 Mumbai</p>
     </div>
-    <ul>
-      <li>Conducted technical audits identifying quality issues impacting platform performance</li>
-      <li>Developed customer segmentation models improving marketing campaign efficiency</li>
-      <li>Prepared internal reports for executive leadership supporting decision making</li>
-      <li>Analyzed data to derive insights and embed them into business actions</li>
-      <li>Tracked and resolved issues via JIRA ensuring timely resolution</li>
-    </ul>
-    <div class="tools-used">
-      <span>MS Excel</span>
-      <span>Google Sheets</span>
-      <span>Tableau</span>
-      <span>JIRA</span>
-      <span>Twilio</span>
-    </div>
+  </div>
   </div>
 
 <h2 class="section-title">Awards & Recognition</h2>
 
-<div class="experience-card">
+<div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
+<div class="experience-card" style="text-align: left; flex: 1 1 calc(50% - 15px);">
   <h3>🏅 Phenomenal Player Award</h3>
   <p><strong>Feb 2024</strong></p>
   <p>
@@ -288,27 +298,30 @@
   </p>
 </div>
 
-<div class="experience-card">
+<div class="experience-card" style="text-align: left; flex: 1 1 calc(50% - 15px);">
   <h3>🏅 Phenomenal Player Award</h3>
   <p><strong>Nov 2022</strong></p>
   <p>
     Owned product solutioning and development of business critical projects, minimizing applications on hold and rejections by 30%+.
   </p>
 </div>
+</div>
 
 <h2 class="section-title">Education</h2>
 
-<div class="experience-card">
+<div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
+<div class="experience-card" style="text-align: left; flex: 1 1 calc(50% - 15px);">
   <h3>MBA in Business Analytics and Marketing</h3>
   <p><a>Minor in Operations</a></p>
   <p>National Institute of Technology, Calicut</p>
   <p>📍 Kerala &nbsp;&nbsp;&nbsp; 📅 2018–2020</p>
 </div>
 
-<div class="experience-card">
+<div class="experience-card" style="text-align: left; flex: 1 1 calc(50% - 15px);">
   <h3>BTech in Information Technology</h3>
   <p>Government Engineering College, Palakkad</p>
   <p>📍 Kerala &nbsp;&nbsp;&nbsp; 📅 2014–2018</p>
+</div>
 </div>
 
 </section>
@@ -319,45 +332,38 @@
   <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: auto;">
     
     <div class="project-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL9t_yGuLvN-FBrY4g9VXzxaITXQFDaiKkxQ&s" alt="ETL Dashboard" style="width: 100%; border-radius: 12px;">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL9t_yGuLvN-FBrY4g9VXzxaITXQFDaiKkxQ&s" alt="ETL Dashboard" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
       <h3>ETL Pipeline Automation</h3>
       <p>Developed and maintained automated data pipelines using Hevo for seamless ETL processes, ensuring data integration from multiple sources into Google BigQuery with high reliability.</p>
       <div class="tools-used"><span>Hevo</span><span>BigQuery</span><span>SQL</span></div>
     </div>
 
     <div class="project-card">
-      <img src="https://www.ncypgarden.com/cdn/shop/files/IMG_8732.jpg?v=1709602366&width=100%20100w,%20//www.ncypgarden.com/cdn/shop/files/IMG_8732.jpg?v=1709602366&width=160%20160w" alt="Analytics Platform" style="width: 100%; border-radius: 12px;">
+      <img src="https://www.ncypgarden.com/cdn/shop/files/IMG_8732.jpg?v=1709602366&width=100%20100w,%20//www.ncypgarden.com/cdn/shop/files/IMG_8732.jpg?v=1709602366&width=160%20160w" alt="Analytics Platform" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
       <h3>Self-Serve Analytics Platform</h3>
       <p>Created no-code data models enabling business owners to independently track key metrics, reducing dependency on analytics teams by 50% and improving decision-making speed.</p>
       <div class="tools-used"><span>Metabase</span><span>BigQuery</span><span>Data Studio</span></div>
     </div>
 
     <div class="project-card">
-      <img src="https://digitalanalystteam.com/wp-content/uploads/2023/06/Looker-studio-data-visualization-1170x500.jpg" alt="Business Optimization" style="width: 100%; border-radius: 12px;">
+      <img src="https://www.codelessone.com/wp-content/uploads/2023/08/Process-Optimization-1024x576.png" alt="Business Process Optimization" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
       <h3>Business Process Optimization</h3>
       <p>Led reporting process optimization initiative for counselling team, reducing manual work and ensuring 95% accuracy in application processing while minimizing rejections by 30%.</p>
       <div class="tools-used"><span>Zoho CRM</span><span>Zoho Analytics</span><span>Excel</span></div>
     </div>
 
     <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2" alt="Segmentation Model" style="width: 100%; border-radius: 12px;">
-      <h3>Customer Segmentation Model</h3>
-      <p>Developed advanced customer segmentation models to improve marketing campaign efficiency by 40%, using data analysis to identify high-value customer segments and behavior patterns.</p>
-      <div class="tools-used"><span>SQL</span><span>Tableau</span><span>Google Sheets</span></div>
-    </div>
-
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Executive Dashboards" style="width: 100%; border-radius: 12px;">
-      <h3>Executive Dashboard Suite</h3>
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/analytics/uf-in-db.jpg" alt="Leadership Insights Hub" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
+      <h3>Leadership Insights Hub</h3>
       <p>Built comprehensive dashboards and reports for executive leadership, providing real-time insights into business performance and supporting data-driven strategic decisions.</p>
       <div class="tools-used"><span>Data Studio</span><span>BigQuery</span><span>Mixpanel</span></div>
     </div>
 
     <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1590080876839-0d50c3d3af34" alt="QA Analytics" style="width: 100%; border-radius: 12px;">
-      <h3>Quality Assurance Analytics</h3>
-      <p>Conducted technical audits and quality analysis using JIRA tracking, identifying critical issues that could impact platform performance and implementing resolution protocols.</p>
-      <div class="tools-used"><span>JIRA</span><span>SQL</span><span>Tableau</span></div>
+      <img src="https://day-off.app/wp-content/uploads/2021/08/x4565-scaled.jpg.pagespeed.ic_.N9j9fKqdEx.webp" alt="HR Automation" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
+      <h3>Offer Letter Automation</h3>
+      <p>Created an automatic HR offer letter generation script wherein, through Google Sheets and App Script integration, offer letters to candidates can be generated within seconds, which earlier used to take up to 30-40 minutes per offer, achieving a 98.6% efficiency improvement.</p>
+      <div class="tools-used"><span>Google Sheets</span><span>App Script</span></div>
     </div>
 
   </div>
