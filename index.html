@@ -32,7 +32,7 @@
 
     .section-title { text-align: center; font-size: 1.75em; font-weight: bold; margin-top: 30px; margin-bottom: 15px; color: #111; }
     .about-card .section-title {
-      text-align: left; /* Ensure About Me heading is left-aligned on both desktop and mobile */
+      /* Removed text-align: right as it's now inside left-aligned text div */
     }
     .section-subtitle { text-align: center; font-size: 1em; color: #777; margin-bottom: 30px; }
 
@@ -154,8 +154,10 @@
       }
       .about-text {
         text-align: left !important; /* Ensure About Me text is left-aligned on mobile */
+        order: 1; /* Text block (including heading) before image on mobile */
       }
       .about-image {
+        order: 2; /* Image after text block on mobile */
       }
       .hero h1, .about h2 {
         font-size: 2em;
@@ -311,12 +313,12 @@ setInterval(() => {
 
   <section class="about" id="about">
   <div class="about-card">
-    <h2 class="section-title">About Me</h2>
     <div class="about-content" style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
       <div class="about-image" style="flex: 1 1 300px; display: flex; justify-content: flex-start; align-items: center;">
         <img src="about.jpg" alt="About me" class="animated-about-img">
       </div>
       <div class="about-text" style="flex: 1 1 350px; text-align: left;">
+        <h2 class="section-title">About Me</h2>
         <p>
           I work with data to solve business problems and help teams make smarter decisions. At Leap Scholar, I led the LS funnel and enjoyed turning raw data into useful stories. With a background in Business Analytics from NIT Calicut and IT engineering, I love building tools that make data easier for everyone to use.
         </p>
@@ -501,7 +503,8 @@ setInterval(() => {
       <img src="https://www.zohowebstatic.com/sites/zweb/images/analytics/uf-in-db.jpg" alt="Leadership Insights Hub" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
       <h3>Leadership Insights Hub</h3>
       <p>Built comprehensive dashboards and reports for executive leadership, providing real-time insights into business performance and supporting data-driven strategic decisions.</p>
-      <div class="tools-used"><span>Zoho Analytics</span><span>SQL</span>Google Sheets</div>
+      <div class="tools-used"><span>Zoho Analytics</span><span>SQL</span><span>Google Sheets</span></div>
+    
     </div>
 
     <div class="project-card">
@@ -522,8 +525,8 @@ setInterval(() => {
     <!-- Contact Info -->
     <div style="flex: 1 1 300px; max-width: 400px; min-width: 260px;">
       <h3>Get In Touch</h3>
-      <p>📧 <strong>Email:</strong> ramitharamdas95@gmail.com</p>
-      <p>📍 <strong>Location:</strong> Bangalore, India</p>
+      <p style="display: flex; align-items: center; gap: 8px;">📧 <strong>Email:</strong> ramitharamdas95@gmail.com</p>
+      <p style="display: flex; align-items: center; gap: 8px;">📍 <strong>Location:</strong> Bangalore, India</p>
       <div style="margin-top: 10px;">
         <a href="https://www.linkedin.com/in/ramitharamdas" target="_blank" style="margin-right: 15px;"><img src="https://img.icons8.com/ios-filled/28/ffffff/linkedin.png"/></a>
         <a href="mailto:ramitharamdas95@gmail.com" style="margin-right: 15px;"><img src="https://img.icons8.com/ios-filled/28/ffffff/email.png"/></a>
