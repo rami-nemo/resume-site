@@ -15,6 +15,7 @@
     .hero h1 { font-size: 2.5em; margin-bottom: 20px; }
     .hero h1 span { color: #1d4ed8; }
     .hero p, .about p { font-size: 1.1em; line-height: 1.6; color: #555; margin-bottom: 15px; }
+    .about-text { text-align: left; } /* Ensure About Me text is left-aligned on desktop */
     .buttons { margin-top: 30px; }
     .btn, .btn:visited, .btn:active {
       padding: 10px 20px;
@@ -30,6 +31,9 @@
     
 
     .section-title { text-align: center; font-size: 1.75em; font-weight: bold; margin-top: 30px; margin-bottom: 15px; color: #111; }
+    .about-card .section-title {
+      text-align: left; /* Ensure About Me heading is left-aligned on both desktop and mobile */
+    }
     .section-subtitle { text-align: center; font-size: 1em; color: #777; margin-bottom: 30px; }
 
     .tag-container { margin-top: 15px; }
@@ -135,8 +139,23 @@
         justify-content: center;
         margin-top: 15px;
       }
+      .animated-about-img {
+        height: 230px; /* Reduced height for mobile */
+        object-fit: cover; /* Ensure cropping */
+        object-position: 50% 5%; /* Ensure top alignment for cropping (hair) */
+        max-width: 100%; /* Ensure image scales within container */
+      }
       .hero-text, .about-text {
-        text-align: center;
+        /* Removed conflicting text-align: center; */
+      }
+      .about-card .section-title {
+        margin-bottom: 20px; /* Space after heading */
+        text-align: left !important; /* Ensure About Me heading is left-aligned on mobile */
+      }
+      .about-text {
+        text-align: left !important; /* Ensure About Me text is left-aligned on mobile */
+      }
+      .about-image {
       }
       .hero h1, .about h2 {
         font-size: 2em;
@@ -215,6 +234,19 @@
       max-width: 1200px;
       margin: 10px auto 20px auto;
     }
+    /* Default styles for about image */
+    .animated-about-img {
+      width: 100%;
+      max-width: 420px;
+      height: 380px; /* Adjusted height for desktop */
+      object-fit: cover;
+      object-position: 50% 5%; /* Adjusted object-position for cropping from top (hair) */
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      animation: floatUpDown 4s ease-in-out infinite, pulse 6s ease-in-out infinite;
+      transition: all 0.4s ease, opacity 0.7s ease;
+      opacity: 1;
+    }
     #contact {
       background-color: #0f172a;
       color: #fff;
@@ -279,12 +311,12 @@ setInterval(() => {
 
   <section class="about" id="about">
   <div class="about-card">
+    <h2 class="section-title">About Me</h2>
     <div class="about-content" style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
       <div class="about-image" style="flex: 1 1 300px; display: flex; justify-content: flex-start; align-items: center;">
-        <img src="about.jpg" alt="About me" class="animated-about-img" style="width: 100%; max-width: 420px; height: 500px; object-fit: cover; object-position: top; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); animation: floatUpDown 4s ease-in-out infinite, pulse 6s ease-in-out infinite; transition: all 0.4s ease, opacity 0.7s ease; opacity: 1;">
+        <img src="about.jpg" alt="About me" class="animated-about-img">
       </div>
       <div class="about-text" style="flex: 1 1 350px; text-align: left;">
-        <h2 class="section-title" style="text-align: left;">About Me</h2>
         <p>
           I work with data to solve business problems and help teams make smarter decisions. At Leap Scholar, I led the LS funnel and enjoyed turning raw data into useful stories. With a background in Business Analytics from NIT Calicut and IT engineering, I love building tools that make data easier for everyone to use.
         </p>
